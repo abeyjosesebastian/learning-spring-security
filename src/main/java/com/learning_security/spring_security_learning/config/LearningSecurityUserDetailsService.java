@@ -3,12 +3,18 @@ package com.learning_security.spring_security_learning.config;
 import com.learning_security.spring_security_learning.model.Customer;
 import com.learning_security.spring_security_learning.repository.CustomerRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.DefaultAuthenticationEventPublisher;
+import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,3 +30,8 @@ public class LearningSecurityUserDetailsService implements UserDetailsService {
         return new User(customer.getEmail(), customer.getPwd(), authorities);
     }
 }
+
+
+
+
+
